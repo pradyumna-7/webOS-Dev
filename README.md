@@ -119,10 +119,10 @@ ares-package ./your-app-directory
 ares-setup-device --list
 
 # Install to simulator
-ares-install --device \<device_name\> your-app_1.0.0_all.ipk
+ares-install --device <device_name> your-app_1.0.0_all.ipk
 
 # Launch the app
-ares-launch --device \<device_name\> your-app
+ares-launch --device <device_name> your-app
 ```
 
 ## Testing on LG TVs
