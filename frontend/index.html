@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1920, height=1080, initial-scale=1.0">
+    <title>SkillSage - KMIT</title>
+    
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Chart.js with datalabels plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Initial Landing Page -->
+    <div id="landing-page" class="active">
+        <div class="landing-container">
+            <div class="logo-container">
+                <img src="assets/logo.png" alt="Skill Sage Logo" class="logo">
+            </div>
+            <h1 class="app-title">UPSKILL</h1>
+            <div class="divider"></div>
+            <p class="app-subtitle">In partnership with XYZ</p>
+            <div id="connection-status" class="connection-status">
+                <div class="status-indicator"></div>
+                <span class="status-text">Disconnected</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="hidden">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <img src="assets/logo.png" alt="SkillSage Logo" class="header-logo">
+                <div class="header-title">
+                    <h1>UPSKILL</h1>
+                    <div class="header-divider"></div>
+                    <p>In partnership with XYZ</p>
+                </div>
+            </div>
+            <div id="header-connection-status" class="connection-status">
+                <div class="status-indicator"></div>
+                <span class="status-text">Disconnected</span>
+            </div>
+        </header>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <aside id="sidebar" class="sidebar expanded">
+                <button id="toggle-sidebar" class="toggle-button">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="profile-section">
+                    <div class="profile-picture">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="profile-info">
+                        <div class="profile-item">
+                            <p class="profile-label">Name</p>
+                            <p id="student-name" class="profile-value">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <p class="profile-label">Roll Number</p>
+                            <p id="student-rollno" class="profile-value">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <p class="profile-label">Branch</p>
+                            <p id="student-branch" class="profile-value">Loading...</p>
+                        </div>
+                        <div class="profile-item">
+                            <p class="profile-label">CGPA</p>
+                            <p id="student-cgpa" class="profile-value">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Dashboard content -->
+            <div class="dashboard-content">
+                <div class="content-wrapper">
+                    <h2 class="section-title">SKILLS OVERVIEW</h2>
+                    
+                    <div id="loading-indicator" class="loading-indicator">
+                        <p>Loading data...</p>
+                    </div>
+                    
+                    <div id="data-grid" class="data-grid">
+                        <!-- Skills Chart -->
+                        <div class="data-card">
+                            <h3 class="card-title">Skills Distribution</h3>
+                            <div class="chart-container">
+                                <canvas id="skills-chart"></canvas>
+                            </div>
+                        </div>
+                        
+                        <!-- GitHub Projects -->
+                        <div class="data-card">
+                            <h3 class="card-title">GitHub Projects</h3>
+                            <div id="projects-container" class="projects-container">
+                                <!-- Projects will be inserted here via JavaScript -->
+                                <p id="no-projects-message" class="no-data-message">No GitHub projects available</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load JavaScript -->
+    <script src="js/websocket.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
