@@ -67,17 +67,17 @@ window.debugError = function(message) {
 // Function to dynamically load scripts
 function loadScript(url) {
     return new Promise((resolve, reject) => {
-        // window.debugLog(`Loading script: ${url}`);
+        window.debugLog(`Loading script: ${url}`);
         const script = document.createElement('script');
         script.src = url;
         script.async = true;
         script.onload = () => {
-            // window.debugLog(`Successfully loaded: ${url}`);
+            window.debugLog(`Successfully loaded: ${url}`);
             resolve();
         };
         script.onerror = () => {
-            // const error = `Failed to load script: ${url}`;
-            // window.debugError(error);
+            const error = `Failed to load script: ${url}`;
+            window.debugError(error);
             reject(new Error(`Failed to load script: ${url}`));
         };
         document.head.appendChild(script);
@@ -87,7 +87,7 @@ function loadScript(url) {
 // Immediately invoked function to ensure proper initialization
 (async function() {
     try {
-        // window.debugLog("Loading charts.js module");
+        window.debugLog("Loading charts.js module");
         
         // Load Chart.js and plugins
         try {
@@ -101,9 +101,9 @@ function loadScript(url) {
             
             // Register plugins
             Chart.register(ChartDataLabels);
-            // window.debugLog("Chart.js and plugins loaded and registered successfully");
+            window.debugLog("Chart.js and plugins loaded and registered successfully");
         } catch (err) {
-            // window.debugError("Error loading Chart.js libraries: " + err.message);
+            window.debugError("Error loading Chart.js libraries: " + err.message);
             console.error("Error loading Chart.js libraries:", err);
             return; // Exit initialization if libraries can't be loaded
         }
@@ -122,7 +122,7 @@ function loadScript(url) {
             '#7158A1', // Deep Lavender  
             '#9A4785', // Muted Plum  
         ];
-        // window.debugLog("Chart colors defined");
+        window.debugLog("Chart colors defined");
         
         // Skills chart instance
         window.skillsChart = null;
@@ -132,8 +132,8 @@ function loadScript(url) {
          * @param {Array} skillsData - Array of skill objects
          */
         window.initializeSkillsChart = function(skillsData) {
-            // window.debugLog("initializeSkillsChart called");
-            // window.debugLog("Data received: " + JSON.stringify(skillsData).substring(0, 100) + "...");
+            window.debugLog("initializeSkillsChart called");
+            window.debugLog("Data received: " + JSON.stringify(skillsData).substring(0, 100) + "...");
             
             try {
                 const chartCanvas = document.getElementById('skills-chart');
@@ -141,10 +141,10 @@ function loadScript(url) {
                     console.error("Chart canvas element not found!");
                     return;
                 }
-                // window.debugLog("Canvas element found");
+                window.debugLog("Canvas element found");
                 
                 const ctx = chartCanvas.getContext('2d');
-                // window.debugLog("Canvas context obtained");
+                window.debugLog("Canvas context obtained");
                 
                 // Process skill data
                 const labels = skillsData.map(skill => skill.skill);
@@ -231,7 +231,7 @@ function loadScript(url) {
                 
                 // Create new chart instance
                 window.skillsChart = new Chart(ctx, chartConfig);
-                // window.debugLog("Chart created successfully");
+                window.debugLog("Chart created successfully");
                 
                 // Show chart container and hide loading indicator
                 const loadingIndicator = document.getElementById('loading-indicator');
@@ -240,17 +240,17 @@ function loadScript(url) {
                 const dataGrid = document.getElementById('data-grid');
                 if (dataGrid) dataGrid.style.display = 'grid';
                 
-                // window.debugLog("Chart display complete");
+                window.debugLog("Chart display complete");
             } catch (err) {
-                // window.debugError("Error initializing skills chart: " + err.message);
+                window.debugError("Error initializing skills chart: " + err.message);
                 console.error("Error initializing skills chart:", err);
             }
         };
         
-        // window.debugLog("Charts module loaded successfully");
-        // window.debugLog("initializeSkillsChart function is: " + (typeof window.initializeSkillsChart));
+        window.debugLog("Charts module loaded successfully");
+        window.debugLog("initializeSkillsChart function is: " + (typeof window.initializeSkillsChart));
     } catch (err) {
-        // window.debugError("Error in charts.js initialization: " + err.message);
+        window.debugError("Error in charts.js initialization: " + err.message);
         console.error("Error in charts.js initialization:", err);
     }
 })();
